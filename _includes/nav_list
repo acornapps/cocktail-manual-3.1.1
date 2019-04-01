@@ -1,4 +1,19 @@
 {% assign navigation = site.data.navigation[include.nav] %}
+{% assign str-array = page.url | split: "/" %}
+{% assign str-last = str-array.last %}
+{% assign str-last-array = str-last | split: "." %}
+{% assign data-nav-id = "" | split: "," %}
+{% assign data-append = "" %}
+{% for nav-id in str-last-array %}
+  {% if data-append == "" %}
+    {% assign data-append = nav-id %}
+  {% else %}
+    {% assign data-append = data-append | append: nav-id %}
+  {% endif %}
+  {% assign data-push = page.url | replace: str-last, data-append %}
+  {% assign data-nav-id = data-nav-id | push: data-push %}
+  {% assign data-append = data-append | append: "." %}
+{% endfor %}
 
 <nav class="nav__list">
 <aside>
@@ -7,7 +22,16 @@
   <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle Menu" }}</label>
   <ul class="nav__items">
     {% for nav in navigation %}
-      <li data-nav-id="{{ nav.url }}">
+
+
+      {% comment %} set "parent" class on current page {% endcomment %}
+      {% if data-nav-id[0] == nav.url %}
+        {% assign parent = "parent" %}
+      {% else %}
+        {% assign parent = "" %}
+      {% endif %}
+
+      <li data-nav-id="{{ nav.url }}" class="{{ parent }}">
         <div class="nav__title">
           {% if nav.url %}
             {% comment %} internal/external URL check {% endcomment %}
@@ -23,80 +47,113 @@
         </div>
 
         {% if nav.children != null %}
-        <ul>
+        <ul class="menu-1">
           {% for child in nav.children %}
-            <li data-nav-id="{{ child.url }}" class="dd-item">
-              {% comment %} internal/external URL check {% endcomment %}
-              {% if child.url contains "://" %}
-                {% assign child_url = child.url %}
-              {% else %}
-                {% assign child_url = child.url | relative_url %}
-              {% endif %}
+            {% comment %} internal/external URL check {% endcomment %}
+            {% if child.url contains "://" %}
+              {% assign child_url = child.url %}
+            {% else %}
+              {% assign child_url = child.url | relative_url %}
+            {% endif %}
 
-              {% comment %} set "active" class on current page {% endcomment %}
-              {% if child.url == page.url %}
-                {% assign active = "active" %}
-              {% else %}
-                {% assign active = "" %}
-              {% endif %}
+            {% comment %} set "active" class on current page {% endcomment %}
+            {% if child.url == page.url %}
+              {% assign active = "active" %}
+            {% else %}
+              {% assign active = "" %}
+            {% endif %}
+
+            {% comment %} set "parent" class on current page {% endcomment %}
+            {% if data-nav-id[1] == child.url %}
+              {% assign parent = "parent-1" %}
+            {% else %}
+              {% assign parent = "" %}
+            {% endif %}
+
+            {% if child.children != null %}
+              {% assign haschildren = "haschildren" %}
+            {% else %}
+              {% assign haschildren = "" %}
+            {% endif %}
+            <li data-nav-id="{{ child.url }}" class="dd-item {{ parent }} {{ active }} {{ haschildren }}">
               <div class="nav__sub-title">
                 {% if child.children != null %}
-                  {% if page.url != child.children.url %}
-                    <i class="fa fa-angle-right fa-lg category-icon"></i>
-                  {% else %}
-                    <i class="fa fa-angle-down fa-lg category-icon"></i>
-                  {% endif%}
+                  <i class="category-icon far fa-plus-square"></i>
                 {% endif %}
                 <a href="{{ child_url }}">{{ child.title }}</a>
               </div>
 
               {% comment %} sub-title in child - 2019.02.13-dongmook {% endcomment %}
               {% if child.children != null %}
-                <ul>
+                <ul class="menu-2">
                   {% for sub-child in child.children %}
-                    <li data-nav-id="{{ sub-child.url }}" class="dd-item">
-                      {% comment %} sub-child internal/external URL check {% endcomment %}
-                      {% if sub-child.url contains "://" %}
-                        {% assign sub-child_url = sub-child.url %}
-                      {% else %}
-                        {% assign sub-child_url = sub-child.url | relative_url %}
-                      {% endif %}
+                    {% comment %} sub-child internal/external URL check {% endcomment %}
+                    {% if sub-child.url contains "://" %}
+                      {% assign sub-child_url = sub-child.url %}
+                    {% else %}
+                      {% assign sub-child_url = sub-child.url | relative_url %}
+                    {% endif %}
 
-                      {% comment %} set "active" class on current page {% endcomment %}
-                      {% if sub-child.url == page.url %}
-                        {% assign active = "active" %}
-                      {% else %}
-                        {% assign active = "" %}
-                      {% endif %}
+                    {% comment %} set "active" class on current page {% endcomment %}
+                    {% if sub-child.url == page.url %}
+                      {% assign active = "active" %}
+                    {% else %}
+                      {% assign active = "" %}
+                    {% endif %}
+
+                    {% comment %} set "parent" class on current page {% endcomment %}
+                    {% if data-nav-id[2] == sub-child.url %}
+                      {% assign parent = "parent-2" %}
+                    {% else %}
+                      {% assign parent = "" %}
+                    {% endif %}
+                    
+                    {% if sub-child.children != null %}
+                      {% assign haschildren = "haschildren" %}
+                    {% else %}
+                      {% assign haschildren = "" %}
+                    {% endif %}
+
+                    <li data-nav-id="{{ sub-child.url }}" class="dd-item {{ parent }} {{ active }} {{ haschildren }}">
                       <div class="nav__sub-title">
                       {% if sub-child.children != null %}
-                        {% if page.url != sub-child.children.url %}
-                          <i class="fa fa-angle-right fa-lg category-icon"></i>
-                        {% else %}
-                          <i class="fa fa-angle-down fa-lg category-icon"></i>
-                        {% endif%}
+                        <i class="category-icon far fa-plus-square"></i>
                       {% endif %}
                         <a href="{{ sub-child_url }}">{{ sub-child.title }}</a>
                       </div>
 
                       {% comment %} sub-title-children in sub-title - 2019.02.13-dongmook {% endcomment %}
                       {% if sub-child.children != null %}
-                        <ul>
+                        <ul class="menu-3">
                           {% for 2-sub-child in sub-child.children %}
-                            <li data-nav-id="{{ 2-sub-child.url }}" class="dd-item">
-                              {% comment %} 2-sub-child internal/external URL check {% endcomment %}
-                              {% if 2-sub-child.url contains "://" %}
-                                {% assign 2-sub-child_url = 2-sub-child.url %}
-                              {% else %}
-                                {% assign 2-sub-child_url = 2-sub-child.url | relative_url %}
-                              {% endif %}
+                            {% comment %} 2-sub-child internal/external URL check {% endcomment %}
+                            {% if 2-sub-child.url contains "://" %}
+                              {% assign 2-sub-child_url = 2-sub-child.url %}
+                            {% else %}
+                              {% assign 2-sub-child_url = 2-sub-child.url | relative_url %}
+                            {% endif %}
 
-                              {% comment %} set "active" class on current page {% endcomment %}
-                              {% if 2-sub-child.url == page.url %}
-                                {% assign active = "active" %}
-                              {% else %}
-                                {% assign active = "" %}
-                              {% endif %}
+                            {% comment %} set "active" class on current page {% endcomment %}
+                            {% if 2-sub-child.url == page.url %}
+                              {% assign active = "active" %}
+                            {% else %}
+                              {% assign active = "" %}
+                            {% endif %}
+
+                            {% comment %} set "parent" class on current page {% endcomment %}
+                            {% if data-nav-id[3] == 2-sub-child.url %}
+                              {% assign parent = "parent-3" %}
+                            {% else %}
+                              {% assign parent = "" %}
+                            {% endif %}
+                            
+                            {% if 2-sub-child.children != null %}
+                              {% assign haschildren = "haschildren" %}
+                            {% else %}
+                              {% assign haschildren = "" %}
+                            {% endif %}
+
+                            <li data-nav-id="{{ 2-sub-child.url }}" class="dd-item {{ parent }} {{ active }} {{ haschildren }}">
                               <div class="nav__sub-title">
                                 <a href="{{ 2-sub-child_url }}">{{ 2-sub-child.title }}</a>
                               </div>

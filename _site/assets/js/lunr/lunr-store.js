@@ -1159,11 +1159,6 @@ var store = [{
         "tags": [],
         "url": "http://localhost:12000/docs/ja/9.4/",
         "teaser":null},{
-        "title": "Cocktail Cloud란?",
-        "excerpt":"Cocktail Cloud는 올인원 컨테이너 관리 플랫폼(All-in-one Container Management Platform)이다. 클라우드 사용이 보편화 되면서, 인프라 뿐 아니라 어플리케이션, 서비스 관리에 대한 요구가 높아지고 있다. 과거와 같은 개발, 운영 방식으로는 클라우드의 장점을 활용하기에 한계가 있기 때문이다. 특히 어플리케이션 영역에서는 지속적인 통합 및 배포(Continuous Integration/Deploy, CI/CD), 마이그레이션(Migration), 멀티/하이브리드 클라우드 구축 등 자동화, 효율화,...","categories": [],
-        "tags": [],
-        "url": "http://localhost:12000/docs/ko/0.0/",
-        "teaser":null},{
         "title": "Cocktail Cloud 구성 개요",
         "excerpt":"Cocktail Cloud는 그 역할에 따라 5개의 레이어로 구성된다. Cluster Management Layer: 컨테이너가 배포/실행되는 인프라(클러스터)와 오케스트레이션(Orchestration)을 담당하는 레이어다. 오케스트레이션은 Kubernetes(https://kubernetes.io)가 담당하고 인프라 관리, 모니터링 등 확장 관리 기능을 제공한다. Service Management Layer: 서비스(Workload)를 기준으로 컨테이너 구성과 관리를 담당하는 레이어다. 서비스를 구성하는 다수의 컨테이너와 관련 객체를 패키징하고 그 수명주기와 모니터링을 관리한다. Pipeline:...","categories": [],
         "tags": [],
@@ -1193,6 +1188,11 @@ var store = [{
         "excerpt":"Cocktail Cloud의 대시보드 레이어는 서비스 현황, 모니터링, 클러스터 현황 등을 웹UI형태로 제공한다. 대시보드는 사용자의 역할에 맞는 뷰를 권한에 따라 제공한다. Cocktail Cloud의 사용자 권한은 다음과 같다. Administrator(Admin) : 클러스터 관리를 수행하고, Cocktail Cloud의 모든 서비스에 대해 관리 권한을 가진다. DevOps : 할당된 하나 이상의 워크스페이스에 대해서만 관리 권한을 가진다. 워크스페이스...","categories": [],
         "tags": [],
         "url": "http://localhost:12000/docs/ko/0.6/",
+        "teaser":null},{
+        "title": "Cocktail Cloud란?",
+        "excerpt":"Cocktail Cloud는 올인원 컨테이너 관리 플랫폼(All-in-one Container Management Platform)이다. 클라우드 사용이 보편화 되면서, 인프라 뿐 아니라 어플리케이션, 서비스 관리에 대한 요구가 높아지고 있다. 과거와 같은 개발, 운영 방식으로는 클라우드의 장점을 활용하기에 한계가 있기 때문이다. 특히 어플리케이션 영역에서는 지속적인 통합 및 배포(Continuous Integration/Deploy, CI/CD), 마이그레이션(Migration), 멀티/하이브리드 클라우드 구축 등 자동화, 효율화,...","categories": [],
+        "tags": [],
+        "url": "http://localhost:12000/docs/ko/0/",
         "teaser":null},{
         "title": "1. 로그인",
         "excerpt":" 아래는 Cocktail Cloud의 초기 로그인 화면이다.   시스템명, ID, Password 입력 후 로그인 할 수 있다.   (아이디는 관리자에게 별도 문의)      최초 접속 또는 비밀번호 초기화시에는 반드시 비밀번호를 변경 해야한다.      기간이 90일이 경과한 경우에도 비밀번호를 변경하거나 비밀번호를 연장 할 수 있다.     ","categories": [],
@@ -1640,7 +1640,12 @@ var store = [{
         "url": "http://localhost:12000/docs/ko/8.1.1.2/",
         "teaser":null},{
         "title": "8.1.1.3 EKS 클러스터 만들기",
-        "excerpt":"EKS 클러스터를 배포하는 방법을 알아봅니다. Kubernetes 용 Amazon Elastic Container Service (Amazon EKS)를 사용하면 AWS의 Kubernetes를 사용하여 컨테이너 화 된 응용 프로그램을 쉽게 배포, 관리 및 확장 할 수 있습니다. 참조 : Amazon Elastic Container Service for Kubernetes(EKS) 클러스터 배포 Amazon Eks에 로그인 Amazon Eks에 로그인 합니다. Amazon EKS 필수...","categories": [],
+        "excerpt":"EKS 클러스터를 배포하는 방법. Kubernetes 용 Amazon Elastic Container Service (Amazon EKS)를 사용하면 AWS의 Kubernetes를 사용하여 컨테이너 화 된 응용 프로그램을 쉽게 배포, 관리 및 확장 할 수 있다. 참조 : Amazon Elastic Container Service for Kubernetes(EKS) 클러스터 배포 Amazon Eks에 로그인 Amazon Eks에 로그인. Amazon EKS 필수 조건 Amazon...","categories": [],
+        "tags": [],
+        "url": "http://localhost:12000/docs/ko/8.1.1.3/",
+        "teaser":null},{
+        "title": "8.1.1.3 EKS 클러스터 만들기",
+        "excerpt":"EKS 클러스터를 배포하는 방법. Kubernetes 용 Amazon Elastic Container Service (Amazon EKS)를 사용하면 AWS의 Kubernetes를 사용하여 컨테이너 화 된 응용 프로그램을 쉽게 배포, 관리 및 확장 할 수 있다. 참조 : Amazon Elastic Container Service for Kubernetes(EKS) 클러스터 배포 Amazon Eks에 로그인 Amazon Eks에 로그인. Amazon EKS 필수 조건 Amazon...","categories": [],
         "tags": [],
         "url": "http://localhost:12000/docs/ko/8.1.1.3/",
         "teaser":null},{
@@ -1653,6 +1658,26 @@ var store = [{
         "excerpt":"Google cloud에 칵테일을 설치하는 과정은 다음과 같다. 사전준비 설치 전 인스턴스 및 아래와 같은 프로그램들이 미리 설치 되어 있어야 하며 설치 되어 있지 않을 경우 에러 메시지가 발생한다. 1) 제공받은 cube 바이너리를 어느 디렉토리에서든 사용할 수 있도록 환경변수 path 설정을 한다. 2) Docker 다운로드 후 설치 Get Docker CE for...","categories": [],
         "tags": [],
         "url": "http://localhost:12000/docs/ko/8.1.2.4/",
+        "teaser":null},{
+        "title": "8.1.3 클러스터 등록",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "http://localhost:12000/docs/ko/8.1.3/",
+        "teaser":null},{
+        "title": "8.1.3.1 클러스터 AKS 등록",
+        "excerpt":"칵테일에 AKS 클러스터 등록 방법을 알아봅니다.   1. Azure 콘솔에 로그인 한다.   2. Azure Active Directory  ","categories": [],
+        "tags": [],
+        "url": "http://localhost:12000/docs/ko/8.1.3.1/",
+        "teaser":null},{
+        "title": "8.1.3.2 클러스터 EKS 등록",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "http://localhost:12000/docs/ko/8.1.3.2/",
+        "teaser":null},{
+        "title": "8.1.3.3 클러스터 GKE 등록",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "http://localhost:12000/docs/ko/8.1.3.3/",
         "teaser":null},{
         "title": "8.2 운영 가이드",
         "excerpt":" ","categories": [],

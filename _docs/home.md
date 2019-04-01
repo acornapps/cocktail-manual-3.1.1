@@ -15,7 +15,7 @@ feature_row:
     alt: ""
     title: "한국어 메뉴얼"
     excerpt: ""
-    url: "/docs/ko/0.0/"
+    url: "/docs/ko/0/"
     btn_class: "btn--primary"
     btn_label: "Learn More"
   - image_path: /assets/japan.png

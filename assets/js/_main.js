@@ -3,6 +3,36 @@
    ========================================================================== */
 
 $(document).ready(function() {
+
+  // menu scrolling
+  if( $('.parent').attr('data-nav-id') !== undefined ) {
+    var offset = $('.parent').offset().top;
+    $('.sidebar').animate({ scrollTop : offset - 100 }, 400);
+  };
+
+  // 
+  if($('.active .parent-1').length > 0){
+    window.console.log("parent-1");
+  }
+  if($('.active .parent-2').length > 0){
+    window.console.log("parent-2");
+  }
+
+  // Sticky scrolling
+    $('a[href^="#"]').on('click', function(e) {
+      window.console.log("offset.top == " + $('.sidebar__right').offset().top);
+      window.console.log("this height == " + $('.sidebar__right').height());
+      if( $(window).width() < 1583 ){
+        var offset = $('.sidebar__right').offset();
+        var bottom = $(window).height() - offset.top - $('.sidebar__right').height();
+        
+        window.console.log("bottom == " + bottom);
+        $('html, body').animate({ scrollTop: offset.top + 300 }, 200,'linear');
+      }
+      e.preventDefault();
+  });
+
+
   // Sticky footer
   var bumpIt = function() {
       $("body").css("margin-bottom", $(".page__footer").outerHeight(true));
